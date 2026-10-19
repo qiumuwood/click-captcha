@@ -8,7 +8,7 @@
         attributeChangedCallback(name, v1, v2) {
             if (v1 === v2 || !this.shadowRoot.firstChild) return;
             this._img.src = this.getAttribute('img');
-            this._wrap.querySelectorAll('.dot').forEach(e => e.remove());
+            this._wrap.querySelectorAll('.dot').forEach((e) => e.remove());
             this._loaded = this._img.naturalWidth > 0;
             this._disabled = false;
         }
@@ -73,7 +73,7 @@
             });
         }
         reset() {
-            this._wrap.querySelectorAll('.dot').forEach(e => e.remove());
+            this._wrap.querySelectorAll('.dot').forEach((e) => e.remove());
             this._disabled = false;
         }
     }
