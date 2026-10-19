@@ -9,9 +9,10 @@
     },
     "authors": [
         {
-            "name": "wood秋木",
-            "email": "qiumu303wood@163.com"
+            "name": "wood秋木"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=8.4.0"
+    }
 }
