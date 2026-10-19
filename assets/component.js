@@ -72,6 +72,10 @@
                 this._disabled = false;
             });
         }
+        reset() {
+            this._wrap.querySelectorAll('.dot').forEach(e => e.remove());
+            this._disabled = false;
+        }
     }
     customElements.define('<element-name>', ClickCaptcha);
 })();
