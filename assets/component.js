@@ -15,21 +15,18 @@
         connectedCallback() {
             this.shadowRoot.innerHTML = `
                 <style>
-                    :host { display: inline-block; user-select: none; }
-                    .captcha { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+                    :host { display: block; width: fit-content; -webkit-user-select: none; user-select: none; }
                     .wrap { position: relative; cursor: crosshair; line-height: 0; border-radius: 8px; overflow: hidden; }
-                    img { display: block; max-width: 100%; height: auto; pointer-events: none; }
-                    .dot { position: absolute; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,112,243,.75); color: #fff; font: bold 14px/1 system-ui; display: flex; align-items: center; justify-content: center; transform: translate(-50%,-50%); pointer-events: none; }
-                    .btns { display: flex; gap: 16px; }
-                    button { padding: 6px 20px; border: 1px solid #cbd5e1; border-radius: 20px; background: #fff; cursor: pointer; font: inherit; }
+                    img { display: block; max-width: 100%; height: auto; }
+                    .dot { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: rgba(0,112,243,.5); color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center; transform: translate(-50%,-50%); }
+                    .btns { display: flex; gap: 16px; justify-content: center; margin-top: 6px; }
+                    button { padding: 6px 20px; border: 1px solid #cbd5e1; border-radius: 20px; background: #fff; cursor: pointer; }
                     button:active { transform: scale(.96); }
                 </style>
-                <div class="captcha">
-                    <div class="wrap"><img src="${this.getAttribute('img')}"></div>
-                    <div class="btns">
-                        <button name="refresh" type="button">刷新</button>
-                        <button name="reset" type="button">重选</button>
-                    </div>
+                <div class="wrap"><img src="${this.getAttribute('img')}"></div>
+                <div class="btns">
+                    <button name="refresh" type="button">刷新</button>
+                    <button name="reset" type="button">重选</button>
                 </div>
             `;
             this._wrap = this.shadowRoot.querySelector('.wrap');
