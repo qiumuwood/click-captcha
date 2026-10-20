@@ -38,7 +38,7 @@ ClickCaptcha::verify($result['answer'], $attempt);
 
 事件：
 
-- `submit`：`e.detail.attempt` 为 `[[x, y], ...]`，用于`ClickCaptcha::verify()`
+- `submit`：`e.detail.attempt` 为 `[[x, y], ...]`，用于`ClickCaptcha::verify()`。
 - `refresh`：用户点刷新。
 
 ## 字体
