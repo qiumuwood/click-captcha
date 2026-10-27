@@ -4,7 +4,7 @@ namespace Jlqiumu\ClickCaptcha;
 
 final class ClickCaptcha
 {
-    private const CHARS = '口日田目回中十干王丰工土士山出川州米木本末未来大天夫太犬人八个介伞小少尖火水永求主玉全金立音吉古杏呆束东西南北甲由申电曲冉再井开并平半羊年午牛生正反方圆角直弯长短高低宽窄厚薄轻重多早晚新旧冷热明暗亮黑白红绿黄蓝紫灰粉橙青色光影声响静动停走跑跳站坐卧起落升降进退关合分打拍提拉推拿放收发我你他她它的是有在这那谁什么怎很最更都也又还就才刚真假对错好坏美丑香臭甜苦酸辣咸淡硬软湿满空富穷贵贱亲疏远近深且丘丙业丝丞串临乃久之乌乎乐了事于亏云互五亡交亦京今从仓以仝令兄兰共兴其具典兼册冒农冠冬';
+    private const CHARS = '口日田目回中十干王丰工土山出川州米木本末未来大天夫太犬人八个介伞小少尖火水永求主玉全金立音吉古杏呆束东西南北甲由申电曲冉再井开并平半羊年午牛生正反方圆角直弯长短高低宽窄厚薄轻重多早晚新旧冷热明暗亮黑白红绿黄蓝紫灰粉橙青色光影声响静动停走跑跳站坐卧起落升降进退关合分打拍提拉推拿放收发我你他她它的是有在这那谁什么怎很最更都也又还就才刚真假对错好坏美丑香臭甜苦酸辣咸淡硬软湿满空富穷贵贱亲疏远近深且丘丙业丝丞串临乃久之乌乎乐了事于亏云互五亡交亦京今从仓以仝令兄兰共兴其具典兼册冒农冠冬';
     private const FONT = __DIR__ . '/../assets/font.ttf';
 
     public static function generate(int $clickCount = 4, int $width = 350, int $challengeHeight = 300, int $tipsHeight = 50, int $charSize = 36)
@@ -24,7 +24,7 @@ final class ClickCaptcha
 
     public static function verify(array $answer, array $attempt)
     {
-        return count($answer) == count($attempt) && array_all(array_map(fn($v1, $v2) => isset($v2[0], $v2[1]) && $v1[0][0] < $v2[0] && $v1[0][1] < $v2[1] && $v1[1][0] > $v2[0] && $v1[1][1] > $v2[1], $answer, $attempt), fn($v) => $v);
+        return count($answer) == count($attempt) && $answer && $attempt && array_all(array_map(fn($v1, $v2) => isset($v2[0], $v2[1]) && $v1[0][0] < $v2[0] && $v1[0][1] < $v2[1] && $v1[1][0] > $v2[0] && $v1[1][1] > $v2[1], $answer, $attempt), fn($v) => $v);
     }
 
     public static function js(string $elementName = 'jlqiumu-click-captcha')

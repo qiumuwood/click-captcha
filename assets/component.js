@@ -5,7 +5,7 @@
             super();
             this.attachShadow({ mode: 'open' });
         }
-        attributeChangedCallback(name, v1, v2) {
+        attributeChangedCallback(_, v1, v2) {
             if (v1 === v2 || !this.shadowRoot.firstChild) return;
             this._img.src = this.getAttribute('img');
             this._wrap.querySelectorAll('.dot').forEach((e) => e.remove());
@@ -13,7 +13,7 @@
             this._disabled = false;
         }
         connectedCallback() {
-            this.shadowRoot.innerHTML = `
+            this.shadowRoot.innerHTML = /* html */ `
                 <style>
                     :host { display: block; width: fit-content; -webkit-user-select: none; user-select: none; }
                     .wrap { position: relative; cursor: crosshair; line-height: 0; border-radius: 8px; overflow: hidden; }
