@@ -16,9 +16,9 @@ final class ClickCaptcha
         $gd = imagecreatetruecolor($width, $tipsHeight + $challengeHeight);
         imagefill($gd, 0, 0, imagecolorallocate($gd, mt_rand(240, 255), mt_rand(240, 255), mt_rand(240, 255)));
         array_map(fn($i) => imagefttext($gd, rand(10, 30), mt_rand(0, 359), rand(0, $width), rand(0, $tipsHeight + $challengeHeight), imagecolorallocatealpha($gd, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255), mt_rand(80, 127)), self::FONT, $pool[$i]), range($clickCount, $clickCount + 49));
-        imagefttext($gd, $tipsHeight * 0.225, 0, 10, $tipsHeight * 0.65, imagecolorallocate($gd, 0, 0, 0), self::FONT, '请依次点击：' . implode('，', array_column($question, 'char')));
+        imagefttext($gd, (int) ($tipsHeight * 0.225), 0, 10, (int) ($tipsHeight * 0.65), imagecolorallocate($gd, 0, 0, 0), self::FONT, '请依次点击：' . implode('，', array_column($question, 'char')));
         imagefilledrectangle($gd, 0, $tipsHeight - 1, $width, $tipsHeight, imagecolorallocate($gd, 0, 0, 0));
-        $answer = array_map(fn($item) => !imagefttext($gd, $charSize * 0.75, $item['angle'], $item['pos'][0], $item['pos'][1], imagecolorallocatealpha($gd, mt_rand(0, 150), mt_rand(0, 150), mt_rand(0, 150), $item['alpha']), self::FONT, $item['char']) ?: [[$item['pos'][0] - 3, $item['pos'][1] - $charSize - 3], [$item['pos'][0] + $charSize + 3, $item['pos'][1] + 3]], $question);
+        $answer = array_map(fn($item) => !imagefttext($gd, (int) ($charSize * 0.75), $item['angle'], $item['pos'][0], $item['pos'][1], imagecolorallocatealpha($gd, mt_rand(0, 150), mt_rand(0, 150), mt_rand(0, 150), $item['alpha']), self::FONT, $item['char']) ?: [[$item['pos'][0] - 3, $item['pos'][1] - $charSize - 3], [$item['pos'][0] + $charSize + 3, $item['pos'][1] + 3]], $question);
         return ['gd' => $gd, 'jpeg' => ob_start() && imagejpeg($gd) && false ?: ob_get_clean(), 'answer' => $answer];
     }
 
